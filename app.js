@@ -40,23 +40,7 @@ function setup(loader, resources) {
   // drag.filters = [blurFilter];
   // blurFilter.blur = 2;
 
-  document.addEventListener('keydown', function(e) {
-    if(e.key === 'ArrowRight') {
-      drag.x += 10;
-    }
-  
-    if(e.key === 'ArrowLeft') {
-      drag.x -= 10;
-    }
-  
-    if(e.key === 'ArrowUp') {
-      drag.y -= 10;
-    }
-  
-    if(e.key === 'ArrowDown') {
-      drag.y += 10;
-    }
-  });
+  addMovements(drag, 20);
 }
 
 
@@ -83,3 +67,23 @@ const sound = new Howl({
 });
 
 // sound.play();
+
+function addMovements(sprite, velocity = 10) {
+  document.addEventListener('keydown', function(e) {
+    if(e.key === 'ArrowRight') {
+      sprite.x += velocity;
+    }
+  
+    if(e.key === 'ArrowLeft') {
+      sprite.x -= velocity;
+    }
+  
+    if(e.key === 'ArrowUp') {
+      sprite.y -= velocity;
+    }
+  
+    if(e.key === 'ArrowDown') {
+      sprite.y += velocity;
+    }
+  });
+}
